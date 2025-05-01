@@ -12,9 +12,21 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
+      # New step to create proper directory structure
+      - name: Prepare deployment files 📂
+        run: |
+          # Create a deployment directory
+          mkdir -p ./deploy
+          # Copy frontend files to deployment directory
+          cp -R ./frontend/* ./deploy/
+          # Ensure index.html exists at the root level
+          if [ -f "./frontend/index.html" ]; then
+            cp ./frontend/index.html ./deploy/index.html
+          fi
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages # The branch the action should deploy to
-          folder: frontend # The folder containing your site
+          folder: deploy # The folder containing your prepared site
           clean: true # Automatically remove deleted files
