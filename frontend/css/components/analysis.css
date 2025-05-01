@@ -1,0 +1,121 @@
+.analysis-score-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-indicator {
+    text-align: center;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.score-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.score-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.risk-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+.risk-badge.low {
+    background-color: var(--success);
+    color: white;
+}
+
+.risk-badge.medium {
+    background-color: var(--warning);
+    color: white;
+}
+
+.risk-badge.high {
+    background-color: var(--error);
+    color: white;
+}
+
+.file-drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 0.5rem;
+    padding: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+    border-color: var(--primary);
+    background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-drop-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+.file-drop-content i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.metadata-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: var(--spacing-md);
+}
+
+.metadata-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.metadata-value {
+    font-weight: 500;
+    word-break: break-all;
+}

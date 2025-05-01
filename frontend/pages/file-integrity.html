@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Integrity Checker - CyberKit Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <!-- ...same navbar as other tools... -->
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="ph-file-check"></i>
+                </div>
+                <div class="tool-info">
+                    <h1>File Integrity Checker</h1>
+                    <p>Verify file integrity and detect modifications using cryptographic hashes</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <div class="tab-container">
+                <div class="tab-header">
+                    <button class="tab-button active" data-tab="check">Check File</button>
+                    <button class="tab-button" data-tab="verify">Verify Hash</button>
+                    <button class="tab-button" data-tab="monitor">Monitor Directory</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="check-file">
+                        <form id="file-check-form" class="tool-form">
+                            <div class="form-group">
+                                <label for="file-input">Select File</label>
+                                <div class="file-drop-zone">
+                                    <input type="file" id="file-input" class="file-input" required>
+                                    <div class="file-drop-content">
+                                        <i class="ph-upload-simple"></i>
+                                        <p>Drag & drop file here or click to browse</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hash-algorithm">Hash Algorithm</label>
+                                <select id="hash-algorithm" class="input-field">
+                                    <option value="md5">MD5</option>
+                                    <option value="sha1">SHA-1</option>
+                                    <option value="sha256" selected>SHA-256</option>
+                                    <option value="sha512">SHA-512</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button-primary">
+                                    <i class="ph-check"></i>
+                                    Calculate Hash
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Additional tab panes -->
+                </div>
+            </div>
+
+            <div id="integrity-results" class="results-panel hidden">
+                <div class="results-header">
+                    <h3>File Integrity Check Results</h3>
+                    <div class="results-actions">
+                        <button class="button-icon" title="Copy Hash">
+                            <i class="ph-copy"></i>
+                        </button>
+                        <button class="button-icon" title="Save Report">
+                            <i class="ph-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="results-container">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/tools/file-integrity.js"></script>
+</body>
+</html>

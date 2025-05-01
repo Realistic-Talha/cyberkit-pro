@@ -1,0 +1,73 @@
+.warning-banner {
+    background: var(--warning-transparent);
+    border: 1px solid var(--warning);
+    color: var(--warning);
+    padding: var(--spacing-md);
+    border-radius: 0.5rem;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.warning-banner i {
+    font-size: 1.5rem;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.radio-label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.radio-label:hover {
+    background: var(--background);
+}
+
+.radio-label input[type="radio"] {
+    margin-right: var(--spacing-sm);
+}
+
+.radio-label .help-text {
+    margin-left: 1.5rem;
+}
+
+.progress-container {
+    background: var(--background);
+    padding: var(--spacing-md);
+    border-radius: 0.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.progress-bar {
+    height: 0.5rem;
+    background: var(--background);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}

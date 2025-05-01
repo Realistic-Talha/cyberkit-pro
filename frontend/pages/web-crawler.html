@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Crawler - CyberKit Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/web-crawler.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <i class="ph-shield-star"></i>
+                    <span>CyberKit Pro</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="fas fa-spider"></i>
+                </div>
+                <div class="tool-info">
+                    <h1>Web Crawler</h1>
+                    <p>Crawl websites to discover links and analyze site structure</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <div class="tool-grid">
+                <!-- Input Panel -->
+                <div class="tool-panel">
+                    <div class="panel-header">
+                        <h3>Crawler Settings</h3>
+                    </div>
+                    <form id="web-crawler-form" class="panel-content">
+                        <div class="form-group">
+                            <label for="url-input">Target URL</label>
+                            <input type="url" id="url-input" class="input-field"
+                                placeholder="https://example.com" required>
+                            <span class="help-text">Enter the website URL to crawl</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="max-depth">Maximum Depth</label>
+                            <input type="number" id="max-depth" class="input-field" 
+                                value="2" min="1" max="5">
+                            <span class="help-text">How deep to crawl (1-5 levels)</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="max-pages">Maximum Pages</label>
+                            <input type="number" id="max-pages" class="input-field" 
+                                value="100" min="1" max="500">
+                            <span class="help-text">Maximum number of pages to crawl</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="respect-robots" checked>
+                                Respect robots.txt
+                            </label>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit" class="button-primary">
+                                <i class="ph-spider"></i>
+                                Start Crawling
+                            </button>
+                            <button type="button" id="stop-crawl" class="button-secondary" disabled>
+                                <i class="ph-stop-circle"></i>
+                                Stop
+                            </button>
+                            <button type="reset" class="button-secondary">
+                                <i class="ph-x-circle"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="tool-panel">
+                    <div class="panel-header">
+                        <h3>Crawler Results</h3>
+                    </div>
+                    <div id="crawler-results" class="panel-content">
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>Pages Crawled: <span id="pages-counter">0</span></span>
+                                <span>Links Found: <span id="links-counter">0</span></span>
+                            </div>
+                        </div>
+                        <div class="results-container">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/tools/web_crawler.js"></script>
+</body>
+</html>

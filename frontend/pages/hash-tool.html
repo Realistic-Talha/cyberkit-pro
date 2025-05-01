@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator - CyberKit Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href="/css/hash-tool.css">
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <a href="/">
+                    <i class="ph-shield-star"></i>
+                    <span>CyberKit Pro</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="ph-hash"></i>
+                </div>
+                <div class="tool-info">
+                    <h1>Hash Generator</h1>
+                    <p>Generate and verify cryptographic hashes for files and text</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <div class="tab-container">
+                <div class="tab-header" role="tablist">
+                    <button class="tab-button active" data-tab="text" role="tab" 
+                            aria-selected="true" aria-controls="text-hash">
+                        Text Hash
+                    </button>
+                    <button class="tab-button" data-tab="file" role="tab" 
+                            aria-selected="false" aria-controls="file-hash">
+                        File Hash
+                    </button>
+                    <button class="tab-button" data-tab="verify" role="tab" 
+                            aria-selected="false" aria-controls="verify-hash">
+                        Verify Hash
+                    </button>
+                </div>
+
+                <div class="tab-content" role="tabpanel">
+                    <div class="tab-pane active" id="text-hash" role="tabpanel" aria-labelledby="text-tab">
+                        <form id="text-hash-form" class="tool-form">
+                            <div class="form-group">
+                                <label for="text-input">Input Text</label>
+                                <textarea id="text-input" class="input-field" rows="6"
+                                    placeholder="Enter text to hash" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="hash-algorithm">Hash Algorithm</label>
+                                <select id="hash-algorithm" class="input-field">
+                                    <option value="md5">MD5</option>
+                                    <option value="sha1">SHA-1</option>
+                                    <option value="sha256" selected>SHA-256</option>
+                                    <option value="sha512">SHA-512</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button-primary">
+                                    <i class="ph-hash"></i>
+                                    Generate Hash
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="file-hash" role="tabpanel" aria-labelledby="file-tab" hidden>
+                        <form id="file-hash-form" class="tool-form">
+                            <div class="form-group">
+                                <label for="file-input">Select File</label>
+                                <input type="file" id="file-input" class="input-field" required>
+                                <div class="input-help">
+                                    Maximum file size: 10MB
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file-algorithm">Hash Algorithm</label>
+                                <select id="file-algorithm" class="input-field">
+                                    <option value="sha256" selected>SHA-256</option>
+                                    <option value="sha384">SHA-384</option>
+                                    <option value="sha512">SHA-512</option>
+                                    <option value="sha3_256">SHA3-256</option>
+                                    <option value="sha3_512">SHA3-512</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button-primary">
+                                    <i class="ph-hash"></i>
+                                    Generate File Hash
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="verify-hash" role="tabpanel" aria-labelledby="verify-tab" hidden>
+                        <form id="verify-hash-form" class="tool-form">
+                            <div class="form-group">
+                                <label for="verify-input">Input Text</label>
+                                <textarea id="verify-input" class="input-field" rows="4"
+                                    placeholder="Enter text to verify" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="hash-value">Hash Value</label>
+                                <input type="text" id="hash-value" class="input-field"
+                                    placeholder="Enter hash to verify" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="verify-algorithm">Hash Algorithm</label>
+                                <select id="verify-algorithm" class="input-field">
+                                    <option value="sha256" selected>SHA-256</option>
+                                    <option value="sha384">SHA-384</option>
+                                    <option value="sha512">SHA-512</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button-primary">
+                                    <i class="ph-check"></i>
+                                    Verify Hash
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hash-results" class="results-panel hidden">
+                <div class="results-header">
+                    <h3>Hash Results</h3>
+                    <div class="results-actions">
+                        <button class="button-icon" title="Copy to Clipboard">
+                            <i class="ph-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="results-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import createHashTool from '/js/tools/hash_tool.js';
+        
+        // Initialize when DOM is fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                window.hashTool = createHashTool();
+            });
+        } else {
+            window.hashTool = createHashTool();
+        }
+    </script>
+</body>
+</html>

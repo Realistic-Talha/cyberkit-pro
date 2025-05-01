@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberKit Pro - Security Tools Suite</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <i class="ph-shield-star"></i>
+                <span>CyberKit Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Security Tools Suite</h1>
+        <p>Professional cybersecurity tools for analysis, testing, and protection</p>
+    </header>
+
+    <main class="container">
+        <div class="tools-grid">
+            <!-- First Row -->
+            <a href="pages/port-scanner.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-scan"></i>
+                </div>
+                <h3>Port Scanner</h3>
+                <p>Scan network ports for open services and vulnerabilities</p>
+                <div class="tool-tags">
+                    <span class="tag">Network</span>
+                    <span class="tag">Security</span>
+                </div>
+            </a>
+
+            <a href="pages/hash-tool.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-hash"></i>
+                </div>
+                <h3>Hash Generator</h3>
+                <p>Generate and verify cryptographic hashes</p>
+                <div class="tool-tags">
+                    <span class="tag">Hash</span>
+                    <span class="tag">Verify</span>
+                </div>
+            </a>
+
+            <a href="pages/encryption.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-lock"></i>
+                </div>
+                <h3>Encryption/Decryption</h3>
+                <p>Secure data using various encryption algorithms</p>
+                <div class="tool-tags">
+                    <span class="tag">Crypto</span>
+                    <span class="tag">Security</span>
+                </div>
+            </a>
+
+            <!-- Second Row -->
+            <a href="pages/log-analyzer.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-chart-line"></i>
+                </div>
+                <h3>Log Analyzer</h3>
+                <p>Analyze log files for security incidents and patterns</p>
+                <div class="tool-tags">
+                    <span class="tag">Analysis</span>
+                    <span class="tag">Security</span>
+                </div>
+            </a>
+
+            <a href="pages/password-cracker.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-key"></i>
+                </div>
+                <h3>Password Cracker</h3>
+                <p>Attempt to recover passwords from their hash values</p>
+                <div class="tool-tags">
+                    <span class="tag">Security</span>
+                    <span class="tag">Hash</span>
+                </div>
+            </a>
+
+            <a href="pages/web-crawler.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-spider"></i>
+                </div>
+                <h3>Web Crawler</h3>
+                <p>Crawl websites to discover links and analyze site structure</p>
+                <div class="tool-tags">
+                    <span class="tag">Network</span>
+                    <span class="tag">Analysis</span>
+                </div>
+            </a>
+
+            <!--  Phishing Detector -->
+            <a href="pages/phishing-detector.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="ph-shield-warning"></i>
+                </div>
+                <div class="tool-info">
+                    <h3>Phishing Detector</h3>
+                    <p>Analyze URLs and websites for potential phishing threats</p>
+                </div>
+                <div class="tool-badge">Security</div>
+            </a>
+            <!-- Add placeholders for future tools -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 CyberKit Pro. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load tools first -->
+    <script src="js/tools/log-analyzer.js"></script>
+    <!-- Load main.js after tools are loaded -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

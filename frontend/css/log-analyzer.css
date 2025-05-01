@@ -1,0 +1,309 @@
+
+.tool-info h1,p{
+    color: aliceblue;
+}
+.tool-header {
+    background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 80%, black));
+    margin-bottom: 2rem;
+    padding: 6rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.file-drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--background);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-drop-zone.has-file {
+    border-color: var(--success);
+    background: rgba(var(--success-rgb), 0.05);
+}
+
+.file-drop-zone.has-file .file-drop-content i {
+    color: var(--success);
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.05);
+}
+
+.file-drop-zone:hover {
+    background-color: var(--hover-bg);
+}
+
+.file-drop-zone input[type="file"] {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.file-drop-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+    pointer-events: none;  /* Allow clicks to pass through to input */
+}
+
+.file-drop-content i {
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.file-drop-content p {
+    margin: var(--spacing-sm) 0;
+    color: var(--text);
+}
+
+.file-drop-content .help-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.file-drop-zone:hover .file-drop-content i {
+    color: var(--primary);
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.file-drop-zone:hover .file-drop-content p {
+    color: var(--primary);
+}
+
+.analysis-options {
+    margin: var(--spacing-lg) 0;
+    background: var(--background);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+}
+
+.analysis-options h4 {
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text);
+    font-size: 0.875rem;
+}
+
+.analysis-summary {
+    margin: var(--spacing-lg) 0;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+}
+
+.summary-card {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+}
+
+.chart-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md);
+    width: 500px;
+}
+
+.chart-container canvas#eventDistribution {
+    width: 500px;
+    height: 500px;
+}
+
+.log-preview {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    background: var(--background);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(var(--error-rgb), 0.1);
+    color: var(--error);
+    border-radius: 8px;
+    margin-top: var(--spacing-md);
+    animation: slideIn 0.3s ease-out;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(var(--success-rgb), 0.1);
+    color: var(--success);
+    border-radius: 8px;
+    margin-top: var(--spacing-md);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.tab-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: 0 var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.tab-button {
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-button:hover {
+    color: var(--primary);
+}
+
+.tab-button.active {
+    color: var(--primary);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+}
+
+.tool-page {
+    padding-top: 80px;
+}
+
+.tool-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.tool-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.results-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.results-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.summary-card h4 {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.tab-content {
+    padding: var(--spacing-lg);
+}
+
+/* ... Additional styles ... */

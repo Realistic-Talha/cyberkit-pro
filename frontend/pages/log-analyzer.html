@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Analyzer - CyberKit Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/log-analyzer.css">  <!-- Fix the path -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <a href="/">
+                    <i class="ph-shield-star"></i>
+                    <span>CyberKit Pro</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="active">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="ph-chart-line"></i>
+                </div>
+                <div class="tool-info">
+                    <h1>Log Analyzer</h1>
+                    <p>Analyze log files to detect security incidents and patterns</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <form id="log-analyzer-form" class="tool-form">
+                <div class="form-group">
+                    <label for="log-file">Upload Log File</label>
+                    <div class="file-drop-zone" onclick="document.getElementById('log-file').click()">
+                        <input type="file" id="log-file" name="file" accept=".log,.txt" required style="display: none;">
+                        <div class="file-drop-content">
+                            <i class="ph-file-text"></i>
+                            <p>Drop your log file here or click to browse</p>
+                            <span class="help-text">Supports .log and .txt files</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-options">
+                    <h4>Analysis Options</h4>
+                    <div class="options-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analysis-options" value="errors" checked>
+                            Detect Errors & Exceptions
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analysis-options" value="security" checked>
+                            Security Incidents
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analysis-options" value="patterns" checked>
+                            Pattern Recognition 
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analysis-options" value="auth" checked>
+                            Authentication Events
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button-primary">
+                        <i class="ph-magnifying-glass"></i>
+                        Analyze Logs
+                    </button>
+                </div>
+            </form>
+
+            <div id="analysis-results" class="results-panel hidden">
+                <div class="results-header">
+                    <h3>Analysis Results</h3>
+                    <div class="results-actions">
+                        <button class="button-icon" id="export-pdf">
+                            <i class="ph-file-pdf"></i>
+                        </button>
+                        <button class="button-icon" id="export-json">
+                            <i class="ph-file-json"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="analysis-summary">
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h4>Total Lines</h4>
+                            <div class="summary-value" id="total-lines">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Errors Found</h4>
+                            <div class="summary-value" id="total-errors">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Security Events</h4>
+                            <div class="summary-value" id="security-events">0</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Time Range</h4>
+                            <div class="summary-value" id="time-range">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-charts">
+                    <div class="chart-container">
+                        <canvas id="activity-timeline"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="event-distribution"></canvas>
+                    </div>
+                </div>
+
+                <div class="analysis-details">
+                    <div class="tab-header">
+                        <button class="tab-button active" data-tab="errors">Errors & Exceptions</button>
+                        <button class="tab-button" data-tab="security">Security Events</button>
+                        <button class="tab-button" data-tab="patterns">Patterns</button>
+                        <button class="tab-button" data-tab="raw">Raw Logs</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Load dependencies first -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Load our modules -->
+    <script type="module">
+        import LogAnalyzer from '../js/tools/log-analyzer.js';
+        
+        // Initialize when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const analyzer = new LogAnalyzer();
+                window.logAnalyzer = analyzer; // Make it available globally if needed
+            } catch (error) {
+                console.error('Failed to initialize Log Analyzer:', error);
+            }
+        });
+    </script>
+</body>
+</html>

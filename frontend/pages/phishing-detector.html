@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detector - CyberKit Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/phishing-detector.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <i class="ph-shield-star"></i>
+                    <span>CyberKit Pro</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="ph-shield-warning"></i>
+                </div>
+                <div class="tool-info">
+                    <h1 style="color: aliceblue;">Phishing Detector</h1>
+                    <p style="color: aliceblue;">Analyze URLs and websites for potential phishing threats</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <form id="phishing-detector-form" class="tool-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="url-input">URL to Analyze</label>
+                        <input type="url" id="url-input" class="input-field" 
+                            placeholder="Enter URL to check" required>
+                        <div class="input-help">
+                            Example: https://example.com
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button-primary">
+                        <i class="ph-magnifying-glass"></i>
+                        Analyze URL
+                    </button>
+                    <button type="reset" class="button-secondary">
+                        <i class="ph-x"></i>
+                        Clear
+                    </button>
+                </div>
+            </form>
+
+            <div id="phishing-results" class="results-panel hidden">
+                <div class="results-header">
+                    <h3>Analysis Results</h3>
+                    <div class="results-actions">
+                        <button class="button-icon" id="copy-results" title="Copy Results">
+                            <i class="ph-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="results-container">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/js/tools/phishing_detector.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption/Decryption - CyberKit Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/encryption.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body class="bg-gradient">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <i class="ph-shield-star"></i>
+                    <span>CyberKit Pro</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Tools</a>
+                <a href="#">Documentation</a>
+                <a href="#">About</a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="ph-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container tool-page">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <div class="tool-icon lg">
+                    <i class="ph-lock"></i>
+                </div>
+                <div class="tool-info">
+                    <h1>Encryption/Decryption</h1>
+                    <p>Secure data using various encryption algorithms</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-container">
+            <div class="mode-switch">
+                <button class="mode-button active" data-mode="text">Text Mode</button>
+                <button class="mode-button" data-mode="file">File Mode</button>
+            </div>
+
+            <div class="mode-content">
+                <div class="mode-pane active" id="text-mode">
+                    <form id="text-crypto-form" class="tool-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="operation">Operation</label>
+                                <select id="operation" class="input-field">
+                                    <option value="encrypt">Encrypt</option>
+                                    <option value="decrypt">Decrypt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="algorithm">Algorithm</label>
+                                <select id="algorithm" class="input-field">
+                                    <option value="fernet">Fernet (Secure)</option>
+                                    <option value="aes">AES-GCM</option>
+                                    <option value="rsa">RSA</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Update the key section in text mode -->
+                        <div class="form-group key-section" id="text-key-section">
+                            <!-- Content will be dynamically generated, but ensure container exists -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-text">Input Text</label>
+                            <textarea id="input-text" class="input-field" rows="6" required
+                                placeholder="Enter text to encrypt/decrypt"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="button-primary">
+                                <i class="ph-lock"></i>
+                                <span id="submit-text">Encrypt</span>
+                            </button>
+                            <button type="reset" class="button-secondary">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- File mode pane -->
+                <div class="mode-pane" id="file-mode">
+                    <form id="file-crypto-form" class="tool-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="file-operation">Operation</label>
+                                <select id="file-operation" class="input-field">
+                                    <option value="encrypt">Encrypt</option>
+                                    <option value="decrypt">Decrypt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="file-algorithm">Algorithm</label>
+                                <select id="file-algorithm" class="input-field">
+                                    <option value="fernet">Fernet (Secure)</option>
+                                    <option value="aes">AES-GCM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Update the key section in file mode -->
+                        <div class="form-group key-section" id="file-key-section">
+                            <!-- Content will be dynamically generated, but ensure container exists -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-file">Select File</label>
+                            <div class="file-drop-zone">
+                                <input type="file" id="input-file" required>
+                                <div class="file-drop-content">
+                                    <i class="ph-upload-simple"></i>
+                                    <p>Drop file here or click to browse</p>
+                                    <span class="file-info"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="button-primary">
+                                <i class="ph-lock"></i>
+                                <span id="file-submit-text">Encrypt</span>
+                            </button>
+                            <button type="reset" class="button-secondary">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="crypto-results" class="results-panel hidden">
+                <div class="results-header">
+                    <h3>Results</h3>
+                    <div class="results-actions">
+                        <button class="button-icon" id="copy-result">
+                            <i class="ph-copy"></i>
+                        </button>
+                        <button class="button-icon" id="download-result">
+                            <i class="ph-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="results-container">
+                    <textarea class="output-field" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/tools/encryption.js"></script>
+</body>
+</html>
